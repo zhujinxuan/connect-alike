@@ -1,0 +1,36 @@
+{
+  "name": "connect-alike",
+  "version": "1.0.0",
+  "description": "Provide local state management without Redux",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "npm run demo",
+    "demo": "webpack-dev-server"
+  },
+  "keywords": [
+    "React",
+    "state-management"
+  ],
+  "author": "Jinxuan Zhu",
+  "license": "MIT",
+  "dependencies": {
+    "babel-preset-stage-3": "^6.24.1",
+    "hoist-non-react-statics": "^2.3.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "redux-declare": "^1.0.1"
+  },
+  "devDependencies": {
+    "@ava/babel-preset-stage-4": "^1.1.0",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "html-webpack-plugin": "^2.30.1",
+    "react-autobind": "^1.0.6",
+    "webpack": "^3.4.1",
+    "webpack-dev-server": "^2.6.1"
+  }
+}
