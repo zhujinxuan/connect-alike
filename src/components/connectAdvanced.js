@@ -17,7 +17,9 @@ function connectAdvanced(selector, mapPropsToStateCallback, WrappedComponent) {
     }
 
     componentWillReceiveProps(nextProps) {
-      this.setState(selector.mapPropsToState(nextProps));
+      if (!this.selector.options.equalProps(this.props, nextProps)) {
+        this.setState(selector.mapPropsToState(nextProps));
+      }
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -39,7 +41,7 @@ function connectAdvanced(selector, mapPropsToStateCallback, WrappedComponent) {
     render() {
       return (
         <WrappedComponent
-          {...this.selector.buildProps(this.props, this.state)}
+          {...this.selector.mapStateToProps(this.state, this.props)}
           {...this.passThrough}
         />
       );

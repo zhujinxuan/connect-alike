@@ -1,6 +1,6 @@
 import Counter from "./Counter/index.js";
 import CounterWithAsync from "./CounterWithAsync/index.js";
-// import CounterWithExternalHanlders from "./CounterWithOnChange/index.js";
+import CounterWithLogger from "./CounterWithLogger/index.js";
 import { render } from "react-dom";
 import React from "react";
 
@@ -13,6 +13,7 @@ render(
     <h1>Counter With Async Helper</h1>
     <CounterWithAsync count={3} />
     <h1>Counter With OnChange</h1>
+    <CounterWithLogger count={3} />
   </div>,
   container
 );

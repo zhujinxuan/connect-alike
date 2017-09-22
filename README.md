@@ -11,13 +11,16 @@ to develop reactive components.
 
 
 ## Document
+The document is on working.  The package is released because my another package `react-layered-sliders` depends on this package.
+
 On working, will be released by 2017-10-1
 
 ## Usage 
 ```js
 import connectAlike from 'connect-alike';
 
+let SmartLocalComponent = connectAlike(mapPropsToState, mapPropsToActionCallback, reducers, actions)(mapStateToProps)(WrappedComponent)
 ```
 
 ## Example 
-On working
+On process.  You could have a look on `demo/`

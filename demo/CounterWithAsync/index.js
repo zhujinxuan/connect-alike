@@ -7,8 +7,7 @@ let mapPropsToState = props => ({
 });
 let mapPropsToStateCallback = () => ({});
 
-let mapPropsToProps = props => props;
-let mapStateToProps = state => state;
+let mapStateToProps = (state, props) => ({ ...props, ...state });
 let reducers = {
   add: prevState => ({
     count: prevState.count + 1
@@ -63,6 +62,6 @@ let CounterWithAsync = connectAlike(
   mapPropsToStateCallback,
   reducers,
   actions
-)(mapPropsToProps, mapStateToProps)(Counter);
+)(mapStateToProps)(Counter);
 
 export default CounterWithAsync;

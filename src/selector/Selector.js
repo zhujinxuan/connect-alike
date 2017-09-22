@@ -25,44 +25,37 @@ function Selector(mapPropsToState, reducers, actions, options) {
   this.dispatch = () => undefined;
   this.handlers = {};
 
-  this.mapPropsToProps = () => {};
   this.mapStateToProps = () => {};
   this.mapHandlersToProps = () => {};
   this.shallEqual = () => {};
   this.buildProps = () => {};
 }
 
-function defaultShallUpdate(props, state, nextProps, nextState) {
-  return !shallowEqual(props, nextProps) || !shallowEqual(state, nextState);
-}
+// function defaultShallUpdate(props, state, nextProps, nextState) {
+// return !shallowEqual(props, nextProps) || !shallowEqual(state, nextState);
+// }
 
 /* @this Selector */
-function addStateToProps(
-  mapPropsToProps,
-  mapStateToProps,
-  mapHandlersToProps,
-  options
-) {
+function addStateToProps(mapStateToProps, mapHandlersToProps, options) {
   let defaultOptions = {
     pure: true,
     dispatchKey: "",
     passThroughKey: "passThrough",
-    shallUpdate: defaultShallUpdate
+    equalProps: shallowEqual,
+    equalState: shallowEqual
   };
   this.options = Object.assign(defaultOptions, options);
-  this.mapPropsToProps = mapPropsToProps;
   this.mapStateToProps = mapStateToProps;
   this.mapHandlersToProps = mapHandlersToProps;
 
   if (this.options.pure) {
-    this.shallUpdate = this.options.shallUpdate;
+    this.shallUpdate = (props, state, nextProps, nextState) =>
+      !this.options.equalProps(props, nextProps) ||
+      !this.options.equalState(state, nextState, props, nextProps);
   } else {
     this.shallUpdate = () => true;
   }
-  this.buildProps = (props, state, handlers) => ({
-    ...this.mapPropsToProps(props),
-    ...this.mapStateToProps(state, props)
-  });
+  // this.buildProps = this.mapStateToProps;
 }
 
 export default Selector;

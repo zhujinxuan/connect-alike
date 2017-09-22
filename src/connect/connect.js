@@ -9,7 +9,6 @@ function connect(
   optionsReduxDeclare = {}
 ) {
   return function(
-    mapPropsToProps,
     mapStateToProps,
     mapHandlersToProps = handlers => ({ handlers: handlers }),
     options = {}
@@ -21,12 +20,7 @@ function connect(
         actions,
         optionsReduxDeclare
       );
-      selector.addStateToProps(
-        mapPropsToProps,
-        mapStateToProps,
-        mapHandlersToProps,
-        options
-      );
+      selector.addStateToProps(mapStateToProps, mapHandlersToProps, options);
 
       return connectAdvanced(
         selector,
