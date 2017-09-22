@@ -1,8 +1,8 @@
 {
   "name": "connect-alike",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Provide local state management without Redux",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "npm run demo",
     "demo": "webpack-dev-server",
