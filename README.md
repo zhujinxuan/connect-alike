@@ -19,7 +19,10 @@ On working, will be released by 2017-10-1
 ```js
 import connectAlike from 'connect-alike';
 
-let SmartLocalComponent = connectAlike(mapPropsToState, mapPropsToActionCallback, reducers, actions)(mapStateToProps)(WrappedComponent)
+let SmartLocalComponent = 
+  connectAlike(mapPropsToState, mapPropsToActionCallback, reducers, actions)
+              (mapStateToProps)
+              (WrappedComponent)
 ```
 
 ## Example 
