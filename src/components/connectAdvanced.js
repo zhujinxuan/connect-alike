@@ -6,7 +6,14 @@ function connectAdvanced(selector, mapPropsToStateCallback, WrappedComponent) {
   class Connect extends Component {
     constructor(props) {
       super(props);
-      this.state = selector.mapPropsToState(props);
+
+      let tempState = selector.mapPropsToState(props);
+      if (typeof tempState === "function") {
+        this.state = tempState({});
+      } else {
+        this.state = tempState;
+      }
+
       bindSelector.call(this, selector, mapPropsToStateCallback(props));
 
       this.passThrough = { ...this.handlers };

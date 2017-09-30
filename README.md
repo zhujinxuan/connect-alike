@@ -8,12 +8,13 @@ to develop reactive components.
 1. Support async actions 
 2. Pass handlers easily
 3. Support callbacks to communicate with other component
+4. Least surprise for Redux users
 
+## How does it work:
 
-## Document
-The document is on working.  The package is released because my another package `react-layered-sliders` depends on this package.
+![Workflow](figures/workFlow.svg)
 
-On working, will be released by 2017-10-1
+To not surprise Redux users, the HOC created by connect-alike mimic a redux workflow. 
 
 ## Usage 
 ```js
@@ -25,5 +26,26 @@ let SmartLocalComponent =
               (WrappedComponent)
 ```
 
+The first set of arguments includes:
+1. `mapPropsToState`: used for initializing a HOC state as a Redux-like store. The argument maps the initial `props` in `constructor` and `nextProps` in `componentWillReceiveProps` 
+3. `reducers` function of `(prevState, action) => nextState`, or nested Object reducers supported by [redux-declare](https://github.com/zhujinxuan/redux-declare). 
+4. `actions` Object of `[actionsName]: (payload)=>action`, or nested Object actions supported by [redux-declare](https://github.com/zhujinxuan/redux-declare)
+  - You could use `dispatch => thunk` to apply async actions
+  - The action handlers are passed to props by `props.handlers` and `props.passThrough`; See Document at [actions][actions]
+2. `mapPropsToActionCallback`: Object of `{[actionName]: (action, nextState) => callback}`.  It enables communication with other components, 
+  - The callback is bound to the setState of HOC.  When a inner action is dispatched, the HOC will call the matched callback.
+
+The second set of argument includes
+1. `mapStateToProps`: maps the HOC state to the props of the next
+
+The third set of argument includes
+1. `WrappedComponent` a stateless React Component for wrapping. Recommended to use a dumb component here. 
+  - Functional JSX is not accepted here.
+
+## Document 
+
 ## Example 
-On process.  You could have a look on `demo/`
+You could have a look on `demo/`
+1. Simple Counter: `demo/Counter/index.js`
+2. Aysnc Counter: `demo/CounterWithAsync/Counter.js`
+3. Counter with Logger: `demo/CounterWithLogger/Counter.js`
