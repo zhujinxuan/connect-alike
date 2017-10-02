@@ -26,7 +26,7 @@ To not surprise Redux users, the HOC created by connect-alike mimic a redux work
 ## Usage 
 First, like all other npm packages:
 ```bash
-npm i --save 
+npm i --save connect-alike
 ```
 
 Then you could build a container by 
