@@ -60,5 +60,5 @@ The third set of argument includes
 ## Example 
 You could have a look on `demo/`
 1. Simple Counter: `demo/Counter/index.js`
-2. Aysnc Counter: `demo/CounterWithAsync/Counter.js`
+2. Aysnc Counter: `demo/CounterWithAsync/index.js`
 3. Counter with Logger: `demo/CounterWithLogger/Counter.js`
